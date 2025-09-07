@@ -1,0 +1,681 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MadhavaRepairs - Your Mobile Repair Solution</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        /* Header */
+        .header {
+            background-color: #ffffff;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: #007bff;
+            font-weight: 700;
+        }
+
+        /* Menu Bar (Desktop) */
+        .header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .header nav ul li {
+            margin-left: 20px;
+        }
+
+        .header nav ul li a {
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .header nav ul li a:hover {
+            color: #0056b3;
+        }
+
+        /* Menu Bar (Mobile - Carousel) */
+        @media (max-width: 768px) {
+            .header nav {
+                width: calc(100% - 100px); /* Adjust to leave space for logo */
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+                scrollbar-color: #007bff #f1f1f1;
+            }
+
+            .header nav::-webkit-scrollbar {
+                height: 8px;
+            }
+            
+            .header nav::-webkit-scrollbar-track {
+                background: #f1f1f1;
+                border-radius: 10px;
+            }
+            
+            .header nav::-webkit-scrollbar-thumb {
+                background: #007bff;
+                border-radius: 10px;
+            }
+
+            .header nav ul {
+                display: flex;
+                white-space: nowrap;
+                padding-bottom: 10px;
+            }
+
+            .header nav ul li {
+                margin: 0 10px;
+                flex-shrink: 0; /* Prevents items from shrinking */
+            }
+        }
+
+        /* Image Carousel */
+        .image-carousel {
+            background-color: #fff;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .carousel-container {
+            display: flex;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 10px 0;
+            gap: 20px;
+        }
+
+        .carousel-item {
+            flex: 0 0 300px;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 8rem 0;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-button {
+            background-color: #28a745;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .cta-button:hover {
+            background-color: #218838;
+        }
+        
+        .whatsapp-button {
+            display: inline-block;
+            background-color: #25D366;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+            margin-top: 20px;
+        }
+        
+        .whatsapp-button:hover {
+            background-color: #1DA851;
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        section:nth-of-type(odd) {
+            background-color: #fff;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #007bff;
+            margin: 10px auto 0;
+        }
+
+        /* About Section */
+        .about p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        /* Our Promise Section */
+        .promise-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            text-align: left;
+        }
+        
+        .promise-item {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-left: 4px solid #007bff;
+            border-radius: 8px;
+            flex: 1 1 250px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+
+        /* Services Section */
+        .service-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .service-item {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            flex: 1 1 250px;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-item i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #007bff;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: #f9f9f9;
+        }
+
+        .testimonial-item {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-style: italic;
+            font-size: 1.1rem;
+            border-left: 4px solid #007bff;
+            padding-left: 20px;
+        }
+
+        .customer-name {
+            margin-top: 10px;
+            font-weight: bold;
+            font-style: normal;
+            color: #555;
+        }
+
+        /* Forms (Contact & Book Repair) */
+        .book-repair, .contact {
+            background-color: #ffffff;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .contact-info a {
+            margin: 0 10px;
+        }
+
+        .location-map {
+            margin-top: 40px;
+        }
+
+        .location-map h3 {
+            margin-bottom: 10px;
+        }
+
+        .location-map iframe {
+            border-radius: 8px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        /* Modal for Contact Form and Welcome Message*/
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 30px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 10px;
+            text-align: center;
+            animation-name: animatetop;
+            animation-duration: 0.4s;
+        }
+        
+        .welcome-modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 30px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 300px;
+            border-radius: 10px;
+            text-align: center;
+            animation-name: animatetop;
+            animation-duration: 0.4s;
+        }
+
+        @keyframes animatetop {
+            from {top:-300px; opacity:0}
+            to {top:0; opacity:1}
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Welcome Modal -->
+    <div id="welcomeModal" class="modal">
+        <div class="welcome-modal-content">
+            <h3>Welcome to MadhavaRepairs!</h3>
+            <p>Your one-stop solution for mobile repairs with doorstep service.</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>MadhavaRepairs</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#" onclick="openContactModal()">Contact</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#book">Book a Repair</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Image Carousel -->
+    <section class="image-carousel">
+        <div class="container">
+            <h2>Our Work</h2>
+            <div class="carousel-container">
+                <div class="carousel-item">
+                    <img src="https://placehold.co/300x200/52489C/EBEBD3?text=Screen+Repair" alt="Screen Repair">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://placehold.co/300x200/5E96AE/F0F3BD?text=Battery+Replacement" alt="Battery Replacement">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://placehold.co/300x200/40B5AD/F8E5A3?text=Doorstep+Service" alt="Doorstep Service">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Homepage Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h2>Your One-Stop Solution for Mobile Repairs with Doorstep Service!</h2>
+            <p>We specialize in screen replacements, battery fixes, and software troubleshooting, all from the comfort of your home or office.</p>
+            <a href="#book" class="cta-button">Schedule Doorstep Service Now!</a>
+        </div>
+    </section>
+    
+    <!-- Our Promise Section -->
+    <section class="promise-section">
+        <div class="container">
+            <h2>Our Promise</h2>
+            <div class="promise-list">
+                <div class="promise-item">
+                    <h3>Doorstep Pick-up & Drop-off</h3>
+                    <p>We come to you! Simply book a repair, and our technician will handle the rest.</p>
+                </div>
+                <div class="promise-item">
+                    <h3>Fast & Reliable Repairs</h3>
+                    <p>We use high-quality parts and expert techniques to get your device back to you quickly.</p>
+                </div>
+                <div class="promise-item">
+                    <h3>Affordable Pricing</h3>
+                    <p>Transparent pricing with no hidden fees. We believe in providing value for your money.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>At MadhavaRepairs, we believe in quick, affordable, and reliable repair services.</p>
+            <p>Started from home, now trusted by hundreds in [Your Area]. We're committed to getting your device back in your hands, working perfectly.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="service-list">
+                <div class="service-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Screen Replacement</h3>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-battery-full"></i>
+                    <h3>Battery Replacement</h3>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-plug"></i>
+                    <h3>Charging Port Repair</h3>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-code"></i>
+                    <h3>Software Issues</h3>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-water"></i>
+                    <h3>Water Damage Repair</h3>
+                </div>
+            </div>
+            <a href="#contact" class="cta-button">Get a Quote</a>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonial-item">
+                <p>"Fixed my phone in under an hour—amazing service!"</p>
+                <p class="customer-name">- A Happy Customer</p>
+            </div>
+            <div class="testimonial-item">
+                <p>"Affordable and reliable. My go-to for all my phone issues."</p>
+                <p class="customer-name">- Another Satisfied Client</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Book a Repair Section -->
+    <section id="book" class="book-repair">
+        <div class="container">
+            <h2>Book a Repair</h2>
+            <!-- Note: A static HTML form cannot send an email directly. This script dynamically creates a mailto link. -->
+            <form id="booking-form">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="problem">Problem Type:</label>
+                    <select id="problem" name="problem" required>
+                        <option value="">--Select a problem--</option>
+                        <option value="Screen Replacement">Screen Replacement</option>
+                        <option value="Battery Replacement">Battery Replacement</option>
+                        <option value="Charging Port Repair">Charging Port Repair</option>
+                        <option value="Software Issues">Software Issues</option>
+                        <option value="Water Damage Repair">Water Damage Repair</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="datetime">Preferred Date/Time:</label>
+                    <input type="datetime-local" id="datetime" name="datetime" required>
+                </div>
+                <button type="button" class="cta-button" onclick="sendBookingEmail()">Submit Booking</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 MadhavaRepairs. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeContactModal()">&times;</span>
+            <h3>Get in Touch</h3>
+            <p>Fill out the form below or chat with us on WhatsApp.</p>
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="contact-name">Name:</label>
+                    <input type="text" id="contact-name" name="contact-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-email">Email:</label>
+                    <input type="email" id="contact-email" name="contact-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="query">Your Query:</label>
+                    <textarea id="query" name="query" rows="4" required></textarea>
+                </div>
+                <button type="button" class="cta-button" onclick="sendContactEmail()">Send Message</button>
+            </form>
+            <a href="https://wa.me/7738473825?text=Hi" class="whatsapp-button" target="_blank">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set min date for booking calendar
+            const datetimeInput = document.getElementById('datetime');
+            if (datetimeInput) {
+                const now = new Date();
+                const year = now.getFullYear();
+                const month = (now.getMonth() + 1).toString().padStart(2, '0');
+                const day = now.getDate().toString().padStart(2, '0');
+                const hours = now.getHours().toString().padStart(2, '0');
+                const minutes = now.getMinutes().toString().padStart(2, '0');
+                
+                const currentDatetime = `${year}-${month}-${day}T${hours}:${minutes}`;
+                datetimeInput.min = currentDatetime;
+            }
+
+            // Show welcome modal on page load
+            const welcomeModal = document.getElementById('welcomeModal');
+            if (welcomeModal) {
+                welcomeModal.style.display = 'block';
+                setTimeout(() => {
+                    welcomeModal.style.display = 'none';
+                }, 3000); // Hide after 3 seconds
+            }
+        });
+
+        function sendBookingEmail() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const problem = document.getElementById('problem').value;
+            const datetime = document.getElementById('datetime').value;
+
+            if (name && phone && problem && datetime) {
+                const subject = "New Repair Booking from Website";
+                const body = `Name: ${name}\nPhone Number: ${phone}\nProblem Type: ${problem}\nPreferred Date/Time: ${datetime}`;
+                window.location.href = `mailto:madhavarepairs@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            } else {
+                alert("Please fill out all the fields to submit your booking.");
+            }
+        }
+
+        function openContactModal() {
+            document.getElementById('contactModal').style.display = 'block';
+        }
+
+        function closeContactModal() {
+            document.getElementById('contactModal').style.display = 'none';
+        }
+
+        function sendContactEmail() {
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const query = document.getElementById('query').value;
+
+            if (name && email && query) {
+                const subject = "New Contact Inquiry from Website";
+                const body = `Name: ${name}\nEmail: ${email}\n\nQuery:\n${query}`;
+                window.location.href = `mailto:madhavarepairs@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            } else {
+                alert("Please fill out all the fields to send your message.");
+            }
+        }
+    </script>
+
+</body>
+</html>
